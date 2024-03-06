@@ -1,0 +1,128 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid " [ngClass]="isScroll? 'py-2 px-5 ' : '' " >
+        <a class="navbar-brand" routerLink="home">
+            <img src="assets/images/freshcart-logo.svg" alt="">
+        </a>
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            
+            <ul class="navbar-nav me-auto mt-2 mt-lg-0" *ngIf="enableNavbar">
+                
+                <li class="nav-item text-center">
+                    <a class="nav-link" routerLink="home" [routerLinkActive]="['bg-main', 'rounded-2', 'text-light']">Products</a>
+                </li>
+
+                <!-- <li class="nav-item text-center">
+                    <a class="nav-link" routerLink="cart" routerLinkActive="bg-main rounded-2 text-light">Cart</a>
+                </li> -->
+                
+                <li class="nav-item text-center">
+                    <a class="nav-link" routerLink="categories" routerLinkActive="bg-main rounded-2 text-light">Categories</a>
+                </li>
+                <li class="nav-item text-center">
+                    <a class="nav-link" routerLink="brands" routerLinkActive="bg-main rounded-2 text-light">Brands</a>
+                </li>
+                <li class="nav-item text-center">
+                    <a class="nav-link" routerLink="wishList" routerLinkActive="bg-main rounded-2 text-light">Wish List</a>
+                </li> 
+                
+                
+            </ul>
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0" >
+                
+                <!-- <li class="nav-item" *ngIf="enableNavbar">
+                    <a class="nav-link" >
+                        <i class="fa-brands fa-facebook-f"></i>   
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="enableNavbar">
+                    <a class="nav-link" >
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="enableNavbar">
+                    <a class="nav-link" >
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                </li> -->
+               
+                <li class="nav-item " *ngIf="enableNavbar">
+                    <a class="nav-link fw-bold cursor " >
+                     <!--{{userName[0]}}-->  <i class="fa-solid fa-user p-1 "></i>  <span class="text-main">{{loggedUserName[0]}}</span>
+                    </a>
+                </li>
+
+                <li class="nav-item " *ngIf="enableNavbar">
+                    <a class="nav-link me-1 cursor " >
+                        <i class="fa-solid fa-cart-shopping icon-size position-relative" routerLink="cart"  > <span class="position-absolute cart-num bg-main p-1 rounded-1 ">{{cartItemsNumber}}</span></i>
+                    </a>
+                </li>
+                <!-- <li class="nav-item " *ngIf="enableNavbar">
+                    <a class="nav-link" routerLink="settings">
+                        <i class="fa-solid fa-cog icon-size "></i>
+                    </a>
+                </li> -->
+                
+
+                <li class="nav-item dropdown cursor" *ngIf="enableNavbar">
+                    <a class="nav-link dropdown-toggle"  id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa-solid fa-cog icon-size "></i> </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                        <a class="dropdown-item" routerLink="settings/resetpassword">Reset Password</a>
+                        <!-- <a class="dropdown-item" >Action 2</a> -->
+                    </div>
+                </li>
+              
+                <li class="nav-item text-center fw-bold" *ngIf="!enableNavbar" >
+                    <a class="nav-link " routerLink="register" routerLinkActive="bg-main rounded-2 text-light ">
+                        Sign UP
+                    </a>
+                </li>
+                <li class="nav-item text-center fw-bold" *ngIf="!enableNavbar">
+                    <a class="nav-link " routerLink="login" routerLinkActive="bg-main rounded-2 text-light ">
+                        login
+                    </a>
+                </li>
+                
+                <li class=" nav-item text-center fw-bold " *ngIf="enableNavbar">
+                    <a class="nav-link btn pointer-event " (click)="logOut()">
+                        <span class="me-1">log out </span><i class="fa-solid fa-right-from-bracket"></i>
+                    </a>
+                </li>
+              
+                
+            </ul>
+
+            
+
+            <!-- <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                
+                <li class="nav-item">
+                    <i class="fa-brands fa-instagram"></i>
+                </li>
+                <li class="nav-item">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </li>
+                <li class="nav-item">
+                    <i class="fa-brands fa-tiktok"></i>                
+                </li>
+                <li class="nav-item">
+                    <i class="fa-brands fa-twitter"></i>                
+                </li>
+                <li class="nav-item">
+                    <i class="fa-brands fa-linkedin"></i>                
+                </li>
+                <li class="nav-item">
+                    <i class="fa-brands fa-youtube"></i>                
+                </li>
+                
+            </ul> -->
+           
+        </div>
+    </div>
+</nav>
+
+

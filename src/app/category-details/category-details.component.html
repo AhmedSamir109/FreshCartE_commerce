@@ -1,0 +1,43 @@
+<div class="view-height mt-5 pt-5" *ngIf="apiResponce else loading">
+    <div class="w-80 m-auto ">
+         <div class="row bg-body-tertiary rounded-4 shadow-sm align-items-center mb-5">
+
+            <div class="col-md-4">
+               <div class="p-4">
+                <img [src]="categoryDetails.image" class="w-100 rounded-3" alt="">
+               </div>
+            </div>
+            <div class="col-md-8 ">
+                <h2 class="fs-1 text-main">{{categoryDetails.name}}</h2>
+
+                <h4 *ngIf="subCaregories.length >0 else noSubCats" class="mt-3 ">Sub Categories:</h4>
+
+                <div class="mb-2 ">
+                    <span *ngFor="let subcat of subCaregories" class="bg-secondary text-light me-2 px-1 rounded-2 d-inline-block my-1 ">
+                    
+                        {{subcat.name}}
+
+
+                    </span>
+                </div>
+
+            </div>
+         </div>
+    </div>
+</div>
+
+<ng-template #noSubCats>
+    <p class="my-4">There are no subcategories under this category</p>
+</ng-template>
+
+
+<ng-template #loading >
+
+    <div class="d-flex justify-content-center align-items-center w-100 vh-100 loading-bg">
+
+        <img src="assets/images/freshcart-logo.svg" class="w-25" alt="">
+        <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
+
+
+    </div>
+</ng-template>

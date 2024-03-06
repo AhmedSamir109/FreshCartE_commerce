@@ -1,0 +1,74 @@
+
+<div *ngIf="productContainer.length>0 else loading" class="view-height">
+
+    <div class="row g-0 py-3 mt-5">
+        <div class="col-8 ">
+            <div class="h-100">
+                <img src="assets/images/slider-image-3.jpeg" class="w-100 h-100" alt="">
+            </div>
+        </div>
+        <div class="col-4">
+            <div>
+                <img src="assets/images/slider-image-1.jpeg" class="w-100" alt="">
+            </div>
+            <div>
+                <img src="assets/images/slider-image-2.jpeg" class="w-100" alt="">
+            </div>
+        </div>
+    
+    </div>
+
+
+
+    
+    <!--slider (chiled component)-->
+    <app-slider [categoryArr]="categories"></app-slider>
+
+
+    <input type="text" [(ngModel)]="seachWord" placeholder="Search .. " class="form-control w-50 m-auto my-3">
+    
+   <div class="view-height mb-5">
+     <div class="row shadow-sm">
+    
+         <div class="col-lg-2 col-md-3 col-sm-6 product" *ngFor="let product of productContainer|search:seachWord">
+             <div class="p-2 position-relative" >
+            
+                 <i class="heart fa-solid fa-heart text-danger" (click)="addToWishList(product._id)"  *ngIf="!wishListProductsId.includes(product._id)"></i> <!-- [class]="isAddedToWishList? 'text-warning' : 'text-danger' " -->
+
+
+
+                 <img [src]="product.imageCover" class="w-100" alt="" [routerLink]='["/product-details" , product._id , product.title]'>
+                 <p class="text-main">{{product.brand.name}}</p>
+                 <h4 class="fs-6 ">{{product.title}}</h4>
+                 <div class="d-flex justify-content-between">
+                     <p>{{product.price| currency:'EGP'}} </p>
+                     <p>{{product.ratingsAverage}} <i class="fa-solid fa-star rating-color"></i></p>
+                 </div>
+     
+                <div class="text-center">
+                  <button class="btn bg-main text-light" (click)="addToCart(product._id)">
+                      <i class="fa-solid fa-plus"></i>
+                      Add to Cart
+                  </button>
+                </div>
+     
+             </div>
+         </div>
+     </div>
+     
+   </div>
+    
+    
+</div>
+
+<ng-template #loading>
+
+    <div class="d-flex justify-content-center align-items-center w-100 vh-100 ">
+
+        <img src="assets/images/freshcart-logo.svg" class="w-25" alt=""> 
+        <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
+
+
+
+    </div>
+</ng-template>

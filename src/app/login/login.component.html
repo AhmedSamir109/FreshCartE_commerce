@@ -1,0 +1,32 @@
+<div class="w-100 vh-100 d-flex justify-content-center align-items-center ">
+    <div class=" px-sm-5 py-5 my-5 w-80 m-auto shadow rounded-3">
+        <h2 class="py-5  text-center fs-1 fw-bold ">login</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="logIn(loginForm)" class="mx-3">
+    
+            <label for="email">email :</label>
+            <input id="email" type="text" formControlName="email" class="form-control mb-3">
+    
+            <label for="pass">password :</label>
+            <input id="pass" type="password" formControlName="password" class="form-control">
+    
+            <!-- <p class="text-danger text-center my-2" *ngIf="loginForm.get('email')?.touched && loginForm.get('password')?.touched">all fields is required</p> -->
+    
+            <p class="text-danger text-center my-2" *ngIf="loginForm.get('email')?.getError('email') && loginForm.get('password')?.getError('pattern')">Incorrect email or password</p>
+
+            <p class="text-danger text-center my-2" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.getError('required')  &&loginForm.get('password')?.touched &&loginForm.get('password')?.getError('required')  ">All field is required </p>
+    
+            <p class="my-2 text-danger text-center">{{apiResponse}}</p>
+    
+            <div class="login-box"> 
+                <a class="mt-4 text-primary forget-pass" routerLink="/settings/forgetpassword">Forget your password ?</a>
+
+                <button class="btn bg-main text-light mt-4 login-btn" *ngIf="!isLoading else loading" >login</button>
+                <!-- <button class="btn bg-main text-light mt-4" *ngIf="!isLoading else loading"  [class] ="!loginForm.get('email')?.valid && !loginForm.get('password')?.valid ? 'disabled' : '' " >login</button> -->
+            </div>
+        </form>
+    </div>
+</div>
+
+<ng-template #loading>
+    <button class="btn bg-main text-light mt-4"><i class="fa-solid fa-spinner fa-spin"></i> login </button>
+</ng-template>

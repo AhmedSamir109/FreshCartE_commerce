@@ -1,0 +1,8 @@
+
+.form-control:focus{
+    box-shadow: none;
+}
+
+.vh{
+    min-height: 100vh;
+}

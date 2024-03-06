@@ -1,0 +1,58 @@
+<div class="w-100 d-flex justify-content-center align-items-center pt-5 pb-2 ">
+    <div class="px-sm-5 py-4  mt-5 w-80 m-auto shadow rounded-3 ">
+        <h2 class="py-4 text-center fs-1 fw-bold">Register Now </h2>
+        <form [formGroup]="registerationForm" (ngSubmit)="signUp(registerationForm)" class="mx-3" >
+        
+            <label for="name"> name :</label>
+            <input  id="name" type="text" formControlName="name" class="form-control mb-2">
+    
+            <!-- <p *ngIf="registerationForm.controls.name.errors?.['required']">this field is required</p> -->
+            <p class="text-danger" *ngIf="registerationForm.get('name')?.getError('required') && registerationForm.get('name')?.touched">this field is required</p> 
+            <p class="text-danger" *ngIf="registerationForm.get('name')?.getError('minlength')">min length is 3</p>
+            <p class="text-danger" *ngIf="registerationForm.get('name')?.getError('maxlength')">max length is 16</p>
+        
+    
+            <label for="email"> email :</label>
+            <input id="email" type="email" formControlName="email" class="form-control mb-2" >
+    
+            <p class="text-danger" *ngIf="registerationForm.get('email')?.getError('required') && registerationForm.get('email')?.touched">this field is required</p> 
+            <p class="text-danger" *ngIf="registerationForm.get('email')?.getError('email')">please enter correct email</p>
+        
+    
+            <label for="pass" > password :</label>
+            <input id="pass" type="password" formControlName="password" class="form-control mb-2">
+    
+            <p class="text-danger" *ngIf="registerationForm.get('password')?.getError('required') && registerationForm.get('password')?.touched">this field is required</p> 
+            <p class="text-danger" *ngIf="registerationForm.get('password')?.getError('pattern')">password must start with capital letter and between 5 to 16 character</p>
+        
+    
+            <label for="rePass"> rePassword :</label>
+            <input id="rePass" type="password" formControlName="rePassword" class="form-control mb-2 ">
+    
+            <p class="text-danger" *ngIf="registerationForm.get('rePassword')?.getError('required') && registerationForm.get('rePassword')?.touched">this field is required</p> 
+            <!-- <p class="text-danger" *ngIf="registerationForm.get('rePassword')?.getError('pattern')">password must start with capital letter and between 5 to 16 character</p> -->
+            <p class="text-danger" *ngIf="registerationForm.get('rePassword')?.value !== registerationForm.get('password')?.value && registerationForm.get('rePassword')?.touched">Repassword don't match Password</p>
+            
+            
+            
+            <label for="phone"> phone :</label>
+            <input id="phone" type="number" formControlName="phone" class="form-control ">
+            
+            <p class="text-danger" *ngIf="registerationForm.get('phone')?.getError('required') && registerationForm.get('phone')?.touched">this field is required</p> 
+            <p class="text-danger" *ngIf="registerationForm.get('phone')?.getError('pattern')"> please enter correct phone number </p>
+    
+    <div class="d-flex justify-content-end">
+    
+                <button *ngIf="!isLoading else loading" class="btn bg-main text-light text-center mt-4" >Sign Up</button>
+                <!-- <button *ngIf="!isLoading else loading" class="btn bg-main text-light text-center mt-4" [class]="!registerationForm.valid? 'disabled ' : '' ">Sign Up</button> -->
+        
+    </div>
+            <h3 class="text-danger text-center mt-2 ">{{apiResponce}}</h3>
+        
+        </form>
+    </div>
+</div>
+
+<ng-template #loading>
+    <button class="btn bg-main text-light text-center mt-5"><i class="fa-solid fa-spinner fa-spin text-light"></i> Signing Up</button>
+</ng-template>

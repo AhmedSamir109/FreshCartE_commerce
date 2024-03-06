@@ -1,0 +1,31 @@
+<div *ngIf="productDetails else loading" class="view-height" >
+    <div class="row pt-5 mt-5 ">
+        <div class="col-md-3 ">
+            <div>
+                <img [src]="productDetails.imageCover" alt="" class="w-100">
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="h-100 d-flex flex-column justify-content-center ">
+                <h2>{{productDetails.title}}</h2>
+                <h3 class="fs-6">{{productDetails.description}}</h3>
+                <h4 class="fs-5 text-main py-2 ">{{productDetails.category.name}}</h4>
+                
+                <div  class="d-flex justify-content-between">
+                    <div>{{productDetails.price}} EGP</div>
+                    <div>{{productDetails.ratingsAverage}} <i class="fa-solid fa-star rating-color"></i></div>
+                </div>
+    
+                <button class="w-100 btn text-light my-3" (click)="addToCart(productDetails.id)">+Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #loading>
+    <div class="d-flex justify-content-center align-items-center vh-100 w-100 ">
+        <img src="assets/images/freshcart-logo.svg" class="w-25" alt=""> 
+        <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
+
+    </div>
+</ng-template>
