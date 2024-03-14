@@ -18,9 +18,9 @@ export class ShoppingCartService {
 
   constructor(private _HttpClient:HttpClient) { 
 
-    let num =Number(localStorage.getItem('cartItemsNumber'))
+//     let num =Number(localStorage.getItem('cartItemsNumber'))
 
- this.cartItemsNumber.next(num)
+//  this.cartItemsNumber.next(num)
   }
 
   addToCart(id:any , userToken:any):Observable<any>{

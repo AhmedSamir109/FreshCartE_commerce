@@ -37,21 +37,24 @@ export class NavbarComponent {
       next: (behaviorSubValue) =>{ this.enableNavbar = behaviorSubValue }
     })
 
-
-    // this._AuthenService.name.subscribe({
-    //   next:(behaviorSubValue) =>{this.userName = behaviorSubValue.split(" ")
-      
-    //   console.log(this.userName)
-    //   }
-    // })
     
-
     this._AuthenService.userName.subscribe({
       next: (value)=>{ this.loggedUserName = value.split(" ")} //Array
     })
 
     this._ShoppingCartService.cartItemsNumber.subscribe({
       next : (value) =>{this.cartItemsNumber = value }
+    })
+
+
+    let myToken = localStorage.getItem('token')
+    
+    this._ShoppingCartService.getLoggedUserCart(myToken).subscribe({
+
+      next : (response)=>{
+        this.cartItemsNumber = response.numOfCartItems;
+      }
+
     })
 
   }

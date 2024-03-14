@@ -1,10 +1,10 @@
-<div class="view-height mt-5 pt-5" *ngIf="apiResponce else loading">
+<section class="view-height mt-5 pt-5">
     <div class="w-80 m-auto ">
          <div class="row bg-body-tertiary rounded-4 shadow-sm align-items-center mb-5">
 
             <div class="col-md-4">
                <div class="p-4">
-                <img [src]="categoryDetails.image" class="w-100 rounded-3" alt="">
+                <img [src]="categoryDetails.image" class="w-100 rounded-3" [alt]="categoryDetails.name">
                </div>
             </div>
             <div class="col-md-8 ">
@@ -24,20 +24,10 @@
             </div>
          </div>
     </div>
-</div>
+</section>
 
 <ng-template #noSubCats>
     <p class="my-4">There are no subcategories under this category</p>
 </ng-template>
 
 
-<ng-template #loading >
-
-    <div class="d-flex justify-content-center align-items-center w-100 vh-100 loading-bg">
-
-        <img src="assets/images/freshcart-logo.svg" class="w-25" alt="">
-        <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
-
-
-    </div>
-</ng-template>

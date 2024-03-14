@@ -3,6 +3,7 @@ import { WishListService } from '../wish-list.service';
 import { WishList } from '../interface/wish-list';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-wish-list',
@@ -14,6 +15,8 @@ export class WishListComponent {
   wishListContainer :WishList[] =[]
 
   apiResponse : boolean = false ;
+
+  getLoggedUSerWishListSubscription = new Subscription();
 
   constructor(private _WishListService:WishListService , private _ShoppingCartService:ShoppingCartService , private toastr: ToastrService){};
 
@@ -56,7 +59,7 @@ export class WishListComponent {
 
         this._ShoppingCartService.cartItemsNumber.next(response.numOfCartItems);
         
-        localStorage.setItem('cartItemsNumber' ,String(response.numOfCartItems))
+        // localStorage.setItem('cartItemsNumber' ,String(response.numOfCartItems))
 
 
         // to delete product from wish list after add to cart
@@ -108,4 +111,8 @@ export class WishListComponent {
     this.toastr.error(message);
   };
 
+
+  ngOnDestroy(): void {
+    this.getLoggedUSerWishListSubscription.unsubscribe();
+  }
 }

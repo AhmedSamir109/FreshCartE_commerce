@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CategoriesService } from '../categories.service';
 import { category  } from '../interface/product';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-categories',
@@ -10,6 +11,8 @@ import { category  } from '../interface/product';
 export class CategoriesComponent {
 
   categories :category[]=[]
+
+  getCategoriesSubscription = new Subscription();
 
   constructor(private _CategoriesService:CategoriesService){}
 
@@ -22,4 +25,9 @@ export class CategoriesComponent {
     })
   }
 
+
+
+  ngOnDestroy(): void {
+    this.getCategoriesSubscription.unsubscribe();
+  }
 }

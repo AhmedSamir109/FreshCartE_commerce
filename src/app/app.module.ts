@@ -10,7 +10,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { BrandsComponent } from './brands/brands.component';
 import { CartComponent } from './cart/cart.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { SliderComponent } from './slider/slider.component'
 import { RouterModule } from '@angular/router';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -26,6 +26,8 @@ import { CategoryDetailsComponent } from './category-details/category-details.co
 import { BrandDetailsComponent } from './brand-details/brand-details.component';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { WishListComponent } from './wish-list/wish-list.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingInterceptor } from './interceptor/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -60,10 +62,13 @@ import { WishListComponent } from './wish-list/wish-list.component';
     ReactiveFormsModule,
     FormsModule,
     ToastrModule.forRoot({timeOut:1500 , positionClass: 'toast-bottom-right'}),
+    NgxSpinnerModule
     
    
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS , useClass :LoadingInterceptor , multi:true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

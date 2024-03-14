@@ -1,4 +1,4 @@
-<section class="view-height pt-5" *ngIf="apiResponse else loading">
+<section class="view-height pt-5" >
     <div class="my-5 py-5 ">
         <div class="row  align-items-center border border-1 rounded-4 bg-body-tertiary w-80 m-auto shadow">
             <div class="col-md-4">
@@ -14,12 +14,3 @@
 </section>
 
 
-<ng-template #loading >
-
-    <div class="d-flex justify-content-center align-items-center w-100 vh-100 loading-bg">
-
-        <img src="assets/images/freshcart-logo.svg" class="w-25" alt="">
-        <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
-
-    </div>
-</ng-template>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CategoriesService } from '../categories.service';
 import { category, subCaregories } from '../interface/product';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-category-details',
@@ -16,6 +17,9 @@ export class CategoryDetailsComponent {
 
   //for loading 
   apiResponce :boolean = false ;
+
+  getCategoryDetailsSubscription = new Subscription();
+  getgetSubCategoriesOnCategorySubscription = new Subscription();
 
 
   constructor(private _CategoriesService:CategoriesService ,private _ActivatedRoute:ActivatedRoute){}
@@ -58,17 +62,13 @@ export class CategoryDetailsComponent {
 
   };
 
-  // getSubCategoriesOnCategory(){
 
-  //   let id = this._ActivatedRoute.snapshot.params['categoryID'];
 
-  //   this._CategoriesService.getSubCategoriesOnCategory(id).subscribe({
-  //     next:(response)=>{ this.subCats = response.data
 
-  //         console.log(this.subCats)
-  //     },
-  //     error:(error)=>{console.log(error)}
-  //   })
-  // }
+
+  ngOnDestroy(): void {
+    this.getCategoryDetailsSubscription.unsubscribe();
+    this.getgetSubCategoriesOnCategorySubscription.unsubscribe();
+  }
 
 }

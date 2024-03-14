@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid " [ngClass]="isScroll? 'py-2 px-5 ' : '' " >
         <a class="navbar-brand" routerLink="home">
-            <img src="assets/images/freshcart-logo.svg" alt="">
+            <img src="assets/images/freshcart-logo.svg" alt="cert-logo">
         </a>
         <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
             data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
@@ -32,7 +32,7 @@
                 
                 
             </ul>
-            <ul class="navbar-nav ms-auto mt-2 mt-lg-0" >
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0 " >
                 
                 <!-- <li class="nav-item" *ngIf="enableNavbar">
                     <a class="nav-link" >
@@ -57,22 +57,21 @@
                 </li>
 
                 <li class="nav-item " *ngIf="enableNavbar">
-                    <a class="nav-link me-1 cursor " >
+                     <a class="nav-link me-1 cursor " >
                         <i class="fa-solid fa-cart-shopping icon-size position-relative" routerLink="cart"  > <span class="position-absolute cart-num bg-main p-1 rounded-1 ">{{cartItemsNumber}}</span></i>
-                    </a>
+                    </a> 
+
+                    <!-- <a class="nav-link me-1 cursor position-relative" >
+                        <i class="fa-solid fa-cart-shopping icon-size " routerLink="cart"  ></i>
+                        <span class="position-absolute cart-num bg-main badge top-0 end-0">{{cartItemsNumber}}</span>
+                    </a> -->
                 </li>
-                <!-- <li class="nav-item " *ngIf="enableNavbar">
-                    <a class="nav-link" routerLink="settings">
-                        <i class="fa-solid fa-cog icon-size "></i>
-                    </a>
-                </li> -->
                 
 
                 <li class="nav-item dropdown cursor" *ngIf="enableNavbar">
                     <a class="nav-link dropdown-toggle"  id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa-solid fa-cog icon-size "></i> </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownId">
                         <a class="dropdown-item" routerLink="settings/resetpassword">Reset Password</a>
-                        <!-- <a class="dropdown-item" >Action 2</a> -->
                     </div>
                 </li>
               
@@ -95,31 +94,6 @@
               
                 
             </ul>
-
-            
-
-            <!-- <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                
-                <li class="nav-item">
-                    <i class="fa-brands fa-instagram"></i>
-                </li>
-                <li class="nav-item">
-                    <i class="fa-brands fa-facebook-f"></i>
-                </li>
-                <li class="nav-item">
-                    <i class="fa-brands fa-tiktok"></i>                
-                </li>
-                <li class="nav-item">
-                    <i class="fa-brands fa-twitter"></i>                
-                </li>
-                <li class="nav-item">
-                    <i class="fa-brands fa-linkedin"></i>                
-                </li>
-                <li class="nav-item">
-                    <i class="fa-brands fa-youtube"></i>                
-                </li>
-                
-            </ul> -->
            
         </div>
     </div>

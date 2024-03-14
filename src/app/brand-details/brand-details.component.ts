@@ -3,6 +3,7 @@ import { Brand } from './../interface/product';
 import { Component } from '@angular/core';
 import { BrandsService } from '../brands.service';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-brand-details',
@@ -14,6 +15,8 @@ export class BrandDetailsComponent {
 
   //for loader
   apiResponse : boolean = false;
+
+  getBrandSubscription = new Subscription();
 
   constructor(private _BrandsService:BrandsService , private _ActivatedRoute:ActivatedRoute){};
 
@@ -28,6 +31,12 @@ export class BrandDetailsComponent {
       this.apiResponse = true ;
     }
    })
+  };
+
+
+
+  ngOnDestroy(): void {
+    this.getBrandSubscription.unsubscribe();
   };
 
 }

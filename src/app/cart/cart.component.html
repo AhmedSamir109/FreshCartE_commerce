@@ -1,5 +1,5 @@
 
-	<div class="my-5 pt-5 view-height" *ngIf="apiResponse else loading" >  <!-- *ngIf="isCartLoading else loading" -->
+	<section class="my-5 pt-5 view-height"> 
 		
 		
 		<div class="container" *ngIf="cartProducts.length >0 else emptyCart">
@@ -13,7 +13,7 @@
 					<div class="row justify-content-center align-items-center border border-1 rounded-2 mb-2" *ngFor="let product of cartProducts">
 							
 											<div class="img-product col-md-2 d-flex justify-content-center">
-												<img [src]="product.product.imageCover" alt="" class="mCS_img_loaded w-80 m-1">
+												<img [src]="product.product.imageCover" alt="product-img" class="mCS_img_loaded w-80 m-1">
 											</div>
 
 											<div class="name-product p-3 col-md-2 text-center mb-2">
@@ -80,16 +80,10 @@
 			    <!-- /.col-lg-4 -->
 			</div>
 		</div>
-	</div>
+	</section>
 	
    
-	<ng-template #loading>
-		<div class="d-flex w-100 vh-100 justify-content-center align-items-center ">
-			<img src="assets/images/freshcart-logo.svg" class="w-25" alt=""> 
-			<i class="fa-solid fa-spinner fa-spin fa-2x"></i>
-
-		</div>
-	</ng-template>
+	
 	
 	<ng-template #emptyCart>
 		<div class="w-100 min-height d-flex flex-column justify-content-center align-items-center">
@@ -101,113 +95,4 @@
 	</ng-template>
 	
 
-	<ng-template >
-
-		<div class="mt-5 pt-5 view-height" *ngIf="apiResponse else loading" >  <!-- *ngIf="isCartLoading else loading" -->
-		
-		
-			<div class="container" *ngIf="cartProducts.length >0 else emptyCart">
-				<div class="row">
-					<div class="col-lg-8 ">
-	
-						<div class="main-heading d-flex justify-content-between mb-5">
-							<h4>Shopping Cart</h4>
-	
-							<button class="rounded-2 clear-cart-btn " (click)="clearCart()"> <i class="fa-solid fa-trash fs-5"></i>  clear cart</button>
-	
-						</div>
-						<div class="table-cart">
-							<table>
-								<thead>
-									<tr>
-										<th>Product</th>
-										<th>Quantity</th>
-										<th>Total</th>
-										
-									</tr>
-								</thead>
-								<tbody >
-									<tr *ngFor="let product of cartProducts">
-										<td>
-											<div class="display-flex align-center">
-												<div class="img-product">
-													<img [src]="product.product.imageCover" alt="" class="mCS_img_loaded">
-												</div>
-												<div class="name-product p-3">
-												   {{product.product.title  }}
-												</div>
-												<div class="price">
-													{{product.price|currency:"EGP"}}
-												</div>
-											</div>
-										</td>
-										<td class="product-count">
-											<form action="#" class="count-inlineflex">
-												<div class="qtyminus"  (click)="updateCartProductDecrease(product.product._id , product.count)">-</div>
-												<input type="text" name="quantity" [value]="product.count" class="qty" >
-												<div class="qtyplus" (click)="updateCartProductIncrease(product.product._id , product.count + 1)">+</div>
-											</form>
-										</td>
-										<td>
-											<div class="total">
-												{{product.price * product.count|currency:"EGP"}}
-											</div>
-										</td>
-										<td class="cursor">
-											<i class="fa-solid fa-trash text-danger fs-5" (click)="deletProduct(product.product._id)"></i>
-										</td>
-									</tr>
-	
-	
-									<tr *ngIf="cartProducts.length === 0">
-										<td colspan="3"> <h2 class="text-center text-main my-5 fs-1">Your Cart Is Empty .. </h2></td>
-									</tr>
-									
-	
-									
-								</tbody>
-							</table>
-							
-						</div>
-						<!-- /.table-cart -->
-					</div>
-	
-	
-	
-	
-	
-	
-					<!-- /.col-lg-8 -->
-					<div class="col-lg-4">
-						<div class="cart-totals">
-							<h3>Cart Totals</h3>
-							<form action="#" method="get" accept-charset="utf-8">
-								<table>
-									<tbody>
-									   
-										<tr>
-											<td>Shipping</td>
-											<td class="free-shipping">Free Shipping</td>
-										</tr>
-										<tr class="total-row">
-											<td>Total</td>
-											<td class="price-total">{{totalCartPrice|currency:"EGP"}}</td>
-										</tr>
-									</tbody>
-								</table>
-								<div class="btn-cart-totals">
-									<a href="#" class="checkout round-black-btn"  routerLink="/checkOut">Proceed to Checkout</a>
-								</div>
-								<!-- /.btn-cart-totals -->
-							</form>
-							<!-- /form -->
-						</div>
-						<!-- /.cart-totals -->
-					</div>
-					<!-- /.col-lg-4 -->
-				</div>
-			</div>
-		</div>
-
-	</ng-template>
 	

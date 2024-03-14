@@ -54,7 +54,7 @@ export class CartComponent {
 
       this._ShoppingCartService.cartItemsNumber.next(response.numOfCartItems)
 
-      localStorage.setItem('cartItemsNumber' ,String(response.numOfCartItems))
+      // localStorage.setItem('cartItemsNumber' ,String(response.numOfCartItems))
 
       localStorage.setItem('cartID' ,response.data._id)
 
@@ -90,7 +90,7 @@ export class CartComponent {
 
 
      this._ShoppingCartService.cartItemsNumber.next(response.numOfCartItems)
-     localStorage.setItem('cartItemsNumber' ,String(response.numOfCartItems))
+    //  localStorage.setItem('cartItemsNumber' ,String(response.numOfCartItems))
 
 
 
@@ -122,7 +122,7 @@ export class CartComponent {
     //  localStorage.setItem('cartItemsNumber' , response.numOfCartItems)
 
      this._ShoppingCartService.cartItemsNumber.next(response.numOfCartItems)
-     localStorage.setItem('cartItemsNumber' ,String(response.numOfCartItems))
+    //  localStorage.setItem('cartItemsNumber' ,String(response.numOfCartItems))
 
     
     }
@@ -140,10 +140,11 @@ export class CartComponent {
       this.cartProducts = response.data.products;
       this.totalCartPrice = response.data.totalCartPrice;
 
-      localStorage.setItem('cartItemsNumber' , response.numOfCartItems)
-      
+      // localStorage.setItem('cartItemsNumber' , response.numOfCartItems)
+      // localStorage.setItem('cartItemsNumber' ,String(response.numOfCartItems))
+
       this._ShoppingCartService.cartItemsNumber.next(response.numOfCartItems)
-      localStorage.setItem('cartItemsNumber' ,String(response.numOfCartItems))
+
 
 
       this.showSuccess('The product has been deleted' )
@@ -161,11 +162,13 @@ export class CartComponent {
 
       this.showSuccess("Your shopping cart has been emptied");
       
-      localStorage.setItem('cartItemsNumber' , "0")  ;
+      // localStorage.setItem('cartItemsNumber' , "0")  ;
 
-      let cartItemsNum= Number(localStorage.getItem('cartItemsNumber'));
+      // let cartItemsNum= Number(localStorage.getItem('cartItemsNumber'));
 
-      this._ShoppingCartService.cartItemsNumber.next(cartItemsNum);
+      // this._ShoppingCartService.cartItemsNumber.next(cartItemsNum);
+      
+      this._ShoppingCartService.cartItemsNumber.next(0);
 
       this._Router.navigate(['/home'])
 

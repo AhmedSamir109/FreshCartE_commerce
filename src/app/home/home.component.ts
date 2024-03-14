@@ -91,7 +91,7 @@ export class HomeComponent {
         
         this._ShoppingCartService.cartItemsNumber.next(response.numOfCartItems);
         
-        localStorage.setItem('cartItemsNumber' ,String(response.numOfCartItems))
+        // localStorage.setItem('cartItemsNumber' ,String(response.numOfCartItems))
 
 
 
@@ -119,7 +119,7 @@ export class HomeComponent {
         console.log(response);
 
 
-        localStorage.setItem('wishListProductsId' , response.data)
+        // localStorage.setItem('wishListProductsId' , response.data)
 
         this.wishListProductsId = response.data;
 

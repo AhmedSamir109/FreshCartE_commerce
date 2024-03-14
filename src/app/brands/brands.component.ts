@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BrandsService } from '../brands.service';
 import { BrandDetails, Brands } from '../interface/brands';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-brands',
@@ -16,19 +17,22 @@ name :string = '';
 
 apiResponse :boolean = false ;
 
+getAllBrandSubscription = new Subscription();
+
   constructor(private _BrandsService:BrandsService){}
 
   ngOnInit(): void {
     this._BrandsService.getAllBrans().subscribe({
       next:(response)=>{
-        this.brandsContainer = response.data ; 
+        this.brandsContainer = response.data ;
+
       },
       error:(error)=>{
         console.log(error)
       }
     })
 
-    this.displayBrandDetails
+    // this.displayBrandDetails;
   };
 
 
@@ -55,5 +59,9 @@ apiResponse :boolean = false ;
     this.name=''
 
   };
+
+  ngOnDestroy(): void {
+    this.getAllBrandSubscription.unsubscribe();
+  }
 
 }

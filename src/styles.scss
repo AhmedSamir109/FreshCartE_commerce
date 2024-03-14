@@ -159,3 +159,23 @@ a:hover {
         order: 0;
     }
 }    
+
+
+.vh-60{
+    height: 60vh;
+}
+
+.w-60{
+    width:60vw;
+}
+
+@media screen and (max-width :800px ) {
+    .w-60{
+        width: 80%;
+    }
+}
+@media screen and (max-width :450px ) {
+    .w-60{
+        width: 90%;
+    }
+}
