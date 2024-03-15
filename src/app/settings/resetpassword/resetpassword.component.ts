@@ -39,6 +39,7 @@ export class ResetpasswordComponent {
         this.isLoading = false;
         this.apiResponseMessage = response.message;
 
+        this._AuthenService.logOut();
       
       },
       error:(error) => {
